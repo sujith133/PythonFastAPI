@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 from fastapi import FastAPI
 
-engine = create_engine('sqlite:///:memory:')
+engine = create_engine('sqlite:///todoDataBase.db')
 Session = sessionmaker(bind=engine)
 Base = declarative_base()
 
@@ -19,7 +19,7 @@ class Todo(Base):
 
 Base.metadata.create_all(engine)
 
-app_fast = FastAPI()
+app_fast = FastAPI() 
 
 @app_fast.get('/')
 async def home():
